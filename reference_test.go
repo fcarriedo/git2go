@@ -108,7 +108,6 @@ func TestIterator(t *testing.T) {
 		t.Fatal("Iteration not over")
 	}
 
-
 	sort.Strings(list)
 	compareStringList(t, expected, list)
 

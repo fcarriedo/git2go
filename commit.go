@@ -9,8 +9,8 @@ extern int _go_git_treewalk(git_tree *tree, git_treewalk_mode mode, void *ptr);
 import "C"
 
 import (
-	"unsafe"
 	"time"
+	"unsafe"
 )
 
 // Commit
@@ -85,10 +85,10 @@ func newSignatureFromC(sig *C.git_signature) *Signature {
 // the offset in mintes, which is what git wants
 func (v *Signature) Offset() int {
 	_, offset := v.When.Zone()
-	return offset/60
+	return offset / 60
 }
 
-func (sig *Signature) toC() (*C.git_signature) {
+func (sig *Signature) toC() *C.git_signature {
 	var out *C.git_signature
 
 	name := C.CString(sig.Name)

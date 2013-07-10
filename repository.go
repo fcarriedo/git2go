@@ -7,8 +7,8 @@ package git
 */
 import "C"
 import (
-	"unsafe"
 	"runtime"
+	"unsafe"
 )
 
 // Repository
@@ -181,7 +181,7 @@ func (v *Repository) CreateCommit(
 	var cparents []*C.git_commit = nil
 	var parentsarg **C.git_commit = nil
 
-	nparents:= len(parents)
+	nparents := len(parents)
 	if nparents > 0 {
 		cparents = make([]*C.git_commit, nparents)
 		for i, v := range parents {
@@ -227,7 +227,7 @@ func (repo *Repository) Path() string {
 	return C.GoString(C.git_repository_path(repo.ptr))
 }
 
-func (repo *Repository) IsBare() (bool) {
+func (repo *Repository) IsBare() bool {
 	return C.git_repository_is_bare(repo.ptr) != 0
 }
 

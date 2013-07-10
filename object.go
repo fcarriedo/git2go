@@ -11,12 +11,12 @@ import "runtime"
 type ObjectType int
 
 var (
-	OBJ_ANY ObjectType = C.GIT_OBJ_ANY
-	OBJ_BAD ObjectType = C.GIT_OBJ_BAD
+	OBJ_ANY    ObjectType = C.GIT_OBJ_ANY
+	OBJ_BAD    ObjectType = C.GIT_OBJ_BAD
 	OBJ_COMMIT ObjectType = C.GIT_OBJ_COMMIT
-	OBJ_TREE ObjectType = C.GIT_OBJ_TREE
-	OBJ_BLOB ObjectType = C.GIT_OBJ_BLOB
-	OBJ_TAG ObjectType = C.GIT_OBJ_TAG
+	OBJ_TREE   ObjectType = C.GIT_OBJ_TREE
+	OBJ_BLOB   ObjectType = C.GIT_OBJ_BLOB
+	OBJ_TAG    ObjectType = C.GIT_OBJ_TAG
 )
 
 type Object interface {
@@ -29,8 +29,8 @@ type gitObject struct {
 	ptr *C.git_object
 }
 
-func (t ObjectType) String() (string) {
-	switch (t) {
+func (t ObjectType) String() string {
+	switch t {
 	case OBJ_ANY:
 		return "Any"
 	case OBJ_BAD:

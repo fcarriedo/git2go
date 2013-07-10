@@ -19,7 +19,7 @@ type Tree struct {
 
 type TreeEntry struct {
 	Name string
-	Id  *Oid
+	Id   *Oid
 	Type ObjectType
 }
 
@@ -83,7 +83,7 @@ func (t Tree) Walk(callback TreeWalkCallback) error {
 }
 
 type TreeBuilder struct {
-	ptr *C.git_treebuilder
+	ptr  *C.git_treebuilder
 	repo *Repository
 }
 
@@ -92,7 +92,7 @@ func (v *TreeBuilder) Free() {
 	C.git_treebuilder_free(v.ptr)
 }
 
-func (v *TreeBuilder) Insert(filename string, id *Oid, filemode int) (error) {
+func (v *TreeBuilder) Insert(filename string, id *Oid, filemode int) error {
 	cfilename := C.CString(filename)
 	defer C.free(unsafe.Pointer(cfilename))
 

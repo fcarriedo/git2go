@@ -9,8 +9,8 @@ import "C"
 import (
 	"bytes"
 	"errors"
-	"unsafe"
 	"strings"
+	"unsafe"
 )
 
 const (
@@ -89,7 +89,7 @@ func (oid *Oid) Equal(oid2 *Oid) bool {
 }
 
 func (oid *Oid) IsZero() bool {
-	for _, a := range(oid.bytes) {
+	for _, a := range oid.bytes {
 		if a != '0' {
 			return false
 		}
@@ -123,10 +123,10 @@ func ShortenOids(ids []*Oid, minlen int) (int, error) {
 
 type GitError struct {
 	Message string
-	Code int
+	Code    int
 }
 
-func (e GitError) Error() string{
+func (e GitError) Error() string {
 	return e.Message
 }
 
@@ -139,14 +139,14 @@ func LastError() error {
 }
 
 func cbool(b bool) C.int {
-	if (b) {
+	if b {
 		return C.int(1)
 	}
 	return C.int(0)
 }
 
 func ucbool(b bool) C.uint {
-	if (b) {
+	if b {
 		return C.uint(1)
 	}
 	return C.uint(0)
